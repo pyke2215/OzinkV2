@@ -6,15 +6,15 @@ import 'package:intl/intl.dart';
 
 class Restaurant extends ChangeNotifier {
   // list of food menu
-  final List<Food> _menu = [
+  final List<Drinks> _menu = [
     // burgers
-    Food(
+    Drinks(
       name: "Classic Cheeseburger",
       description:
       "A juicy beef patty with melted cheddar, lettuce, tomato, and a hint of onion and pickle.",
       imagePath: "lib/images/burgers/1.jpg",
       price: 10000,
-      category: FoodCategory.burgers,
+      category: DrinksCategory.coffee,
       availableAddons: [
         Addon(name: "Extra cheese", price: 1000),
         Addon(name: "Bacon", price: 1000),
@@ -22,13 +22,13 @@ class Restaurant extends ChangeNotifier {
       ],
     ),
 
-    Food(
+    Drinks(
       name: "Classic Cc",
       description:
       "A juicy beef patty with melted cheddar, lettuce, tomato, and a hint of onion and pickle.",
       imagePath: "lib/images/burgers/1.jpg",
       price: 0.99,
-      category: FoodCategory.burgers,
+      category: DrinksCategory.smoothie,
       availableAddons: [
         Addon(name: "Extra cheese", price: 0.99),
         Addon(name: "Bacon", price: 1.99),
