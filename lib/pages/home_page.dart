@@ -69,7 +69,9 @@ class _HomePageState extends State<HomePage>
 
   // sort out and return a list of food items that belong to a specific category
   List<Food> _filterMenuByCategory(String category, List<Food> fullMenu) {
-    return fullMenu.where((food) => food.category == category).toList();
+    return fullMenu
+        .where((food) => food.category.toLowerCase() == category.toLowerCase())
+        .toList();
   }
 
   // return list of foods in given category

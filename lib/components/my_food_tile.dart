@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import '../models/food.dart';
 
 class FoodTile extends StatelessWidget {
@@ -51,17 +53,24 @@ class FoodTile extends StatelessWidget {
                     ),
                   ), // Text
                   const SizedBox(height: 5),
-                  Text(
-                    food.description,
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.inversePrimary,
+                  Container(
+                    width: MediaQuery.of(context).size.width - 200,
+                    child: Text(
+                      food.description,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.inversePrimary,
+                      ),
                     ),
-                  ), // Text
+                  ),
                 ],
               ),
             ),
             // food image
-            Padding(
+            Container(
+              height: 100,
+              width: 140,
               padding: EdgeInsets.all(3),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
