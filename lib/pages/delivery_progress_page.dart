@@ -12,7 +12,6 @@ class DeliveryProgressPage extends StatefulWidget {
 }
 
 class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
-
   // get access to db
   FirestoreService db = FirestoreService();
 
@@ -32,18 +31,14 @@ class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
         backgroundColor: Colors.transparent,
       ),
       bottomNavigationBar: _buildBottomNavBar(context),
-      body: Column(
-        children: [
-          MyReceipt(),
-        ],
-      ),
+      body: MyReceipt(),
     );
   }
 
   // custom navbar
   Widget _buildBottomNavBar(BuildContext context) {
     return Container(
-      height: 100,
+      height: 70,
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.secondary,
         borderRadius: const BorderRadius.only(
@@ -51,8 +46,9 @@ class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
           topRight: Radius.circular(40),
         ),
       ),
-      padding: const EdgeInsets.all(25),
+      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // profile pic of driver
           Container(
@@ -71,6 +67,7 @@ class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
           // driver detail
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 "Thuận Sạc Pin",
@@ -125,6 +122,5 @@ class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
         ],
       ),
     );
-
   }
 }

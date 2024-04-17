@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:fooddelivtute/components/my_button.dart';
@@ -71,7 +70,7 @@ class _PaymentPageState extends State<PaymentPage> {
         foregroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text("Checkout"),
       ),
-      body: Column(
+      body: ListView(
         children: [
           // credit card
           CreditCardWidget(
@@ -99,15 +98,13 @@ class _PaymentPageState extends State<PaymentPage> {
             },
             formKey: formKey,
           ),
-
-          const Spacer(),
-
+          // Button mua
+          const SizedBox(height: 30),
           MyButton(
             onTap: userTappedPay,
             text: "Mua ngay",
           ),
-
-          const SizedBox(height: 25,)
+          const SizedBox(height: 15),
         ],
       ),
     );

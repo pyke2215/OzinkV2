@@ -13,57 +13,71 @@ class FoodTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        GestureDetector(
-          onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Row(
-            children: [
-              // text food details
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(food.name),
-                    Text(
-                      '\$${food.price}',
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                    ), // Text
-                    const SizedBox(height: 10),
-                    Text(
-                      food.description,
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.inversePrimary,
-                      ),
-                    ), // Text
-
-                  ],
-                ),
-              ),
-
-              const SizedBox(width: 15),
-
-              // food image
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Image.asset(food.imagePath, height: 120),
-              ),
-            ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.only(
+          top: 15,
+          left: 15,
+          right: 15,
+        ),
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(9),
+          border: Border.all(
+            color: Colors.white, // Màu của đường viền
+            width: 1, // Độ dày của đường viền
           ),
         ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            // text food details
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    food.name,
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                  Text(
+                    '\$${food.price}',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  ), // Text
+                  const SizedBox(height: 5),
+                  Text(
+                    food.description,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.inversePrimary,
+                    ),
+                  ), // Text
+                ],
+              ),
+            ),
+            // food image
+            Padding(
+              padding: EdgeInsets.all(3),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: SizedBox(
+                  height: 100,
+                  width: 140,
+                  child: Image.network(
+                    food.imagePath,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
-
-        // divider line
-        Divider(
-          color: Theme.of(context).colorScheme.tertiary,
-          endIndent: 25,
-          indent: 25,
-        ),
-      ],
+      ),
     );
   }
 }

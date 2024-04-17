@@ -50,43 +50,48 @@ class CartPage extends StatelessWidget {
                 },
                 icon: const Icon(Icons.delete),
               ), // IconButton
-
             ],
           ),
           body: Column(
             children: [
-
               // list of cart
               Expanded(
                 child: Column(
                   children: [
                     userCart.isEmpty
-                        ? const Expanded(child: Center(child: Text("Giỏ hàng trống...")))
+                        ? const Expanded(
+                            child: Center(
+                              child: Text(
+                                "Trống ...",
+                                style: TextStyle(fontSize: 18),
+                              ),
+                            ),
+                          )
                         : Expanded(
-                      child: ListView.builder(
-                        itemCount: userCart.length,
-                        itemBuilder: (context, index) {
-                          // get individual cart item
-                          final cartItem = userCart[index];
-                
-                          // return cart tile UI
-                          return MyCartTile(cartItem: cartItem);
-                
-                        }
-                
-                      ),
-                    ),
+                            child: ListView.builder(
+                                itemCount: userCart.length,
+                                itemBuilder: (context, index) {
+                                  // get individual cart item
+                                  final cartItem = userCart[index];
 
+                                  // return cart tile UI
+                                  return MyCartTile(cartItem: cartItem);
+                                }),
+                          ),
+
+                    const SizedBox(height: 15),
                     // nút mua hàng
-                    MyButton(
-                        text: "Đến trang thanh toán",
-                        onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const PaymentPage(),)
-                        )
-                    ),
+                    userCart.isEmpty
+                        ? const SizedBox(height: 10)
+                        : MyButton(
+                            text: "Đến trang thanh toán",
+                            onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const PaymentPage(),
+                                ))),
 
-                    const SizedBox(height: 25,)
+                    const SizedBox(height: 15),
                   ],
                 ),
               ),

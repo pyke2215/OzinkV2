@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 // food item
 class Food {
@@ -5,8 +6,7 @@ class Food {
   final String description;
   final String imagePath;
   final double price;
-  final FoodCategory category;
-  List<Addon> availableAddons;
+  final String category;
 
   Food({
     required this.name,
@@ -14,26 +14,23 @@ class Food {
     required this.imagePath,
     required this.price,
     required this.category,
-    required this.availableAddons,
   });
+
+  static Food fromSnapshot(DocumentSnapshot snap) {
+    Food food = Food(
+        name: snap['name'],
+        description: snap['description'],
+        price: snap['price'],
+        imagePath: snap['imagePath'],
+        category: snap['category']);
+    return food;
+  }
 }
 
-// food categories
-enum FoodCategory {
-  burgers,
-  salads,
-  sides,
-  desserts,
-  drinks,
-}
-
-// food addons
-class Addon {
-  String name;
-  double price;
-
-  Addon({
-    required this.name,
-    required this.price,
-  });
-}
+// final List<String> foodCategorie = [
+//   'burgers',
+//   'coffee',
+//   'salads',
+//   'sides',
+//   'desserts',
+// ];

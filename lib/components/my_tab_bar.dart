@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:fooddelivtute/models/food.dart';
 
 class MyTabBar extends StatelessWidget {
   final TabController tabController;
+  final List<String> menuTabBar;
 
   const MyTabBar({
     super.key,
     required this.tabController,
+    required this.menuTabBar,
   });
 
   List<Tab> _buildCategoryTabs() {
-    return FoodCategory.values.map((category) {
+    return menuTabBar.map((category) {
       return Tab(
         text: category.toString().split('.').last,
       );
