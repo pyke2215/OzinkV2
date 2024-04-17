@@ -12,7 +12,7 @@ Future fetchMenuTabBar() async {
       querySnapshotTabBar.docs.map((doc) => doc['name'] as String).toList();
 }
 
-Future fetchMenuData() async {
+void fetchMenuData() async {
   final QuerySnapshot querySnapshot =
       await FirebaseFirestore.instance.collection('products').get();
   menuFood = querySnapshot.docs.map((doc) {
