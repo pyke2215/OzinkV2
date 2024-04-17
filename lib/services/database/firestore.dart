@@ -14,17 +14,3 @@ class FirestoreService {
     });
   }
 }
-
-// class FirestoreDB {
-//   // Initialise Firebase Cloud Firestore
-//   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
-
-//   Stream<List<Food>> getAllProducts() {
-//     return _firebaseFirestore
-//         .collection('products')
-//         .snapshots()
-//         .map((snapshot) {
-//       return snapshot.docs.map((doc) => Food.fromSnapshot(doc)).toList();
-//     });
-//   }
-// }

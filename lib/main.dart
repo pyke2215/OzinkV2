@@ -5,10 +5,14 @@ import 'package:fooddelivtute/firebase_options.dart';
 import 'package:fooddelivtute/models/restaurant.dart';
 import 'package:fooddelivtute/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:fooddelivtute/controllers/fetchData.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  await fetchMenuTabBar();
+  await fetchMenuData();
   runApp(
     MultiProvider(
       providers: [

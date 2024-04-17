@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fooddelivtute/pages/home_page.dart';
 import 'package:fooddelivtute/services/auth/login_or_register.dart';
+import 'package:fooddelivtute/controllers/fetchData.dart';
 
 class AuthGate extends StatelessWidget {
   const AuthGate({super.key});
@@ -14,7 +15,10 @@ class AuthGate extends StatelessWidget {
         builder: (context, snapshot) {
           // user is logged in
           if (snapshot.hasData) {
-            return HomePage();
+            return HomePage(
+              menuTabBar: menuTabBar,
+              menuFood: menuFood,
+            );
           }
           // user is NOT logged in
           else {

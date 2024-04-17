@@ -5,8 +5,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:fooddelivtute/components/my_food_tile.dart';
 import 'package:fooddelivtute/components/my_tab_bar.dart';
+import 'package:fooddelivtute/controllers/fetchData.dart';
 import 'package:fooddelivtute/models/food.dart';
-// import 'package:fooddelivtute/models/restaurant.dart';
 import 'package:fooddelivtute/pages/food_page.dart';
 import 'package:provider/provider.dart';
 
@@ -16,62 +16,17 @@ import '../components/my_drawer.dart';
 import '../components/my_sliver_app_bar.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+  final List<String> menuTabBar;
+  final List<Food> menuFood;
+
+  HomePage({super.key, required this.menuTabBar, required this.menuFood});
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
-  List<String> menuTabBar = [
-    "unknown",
-    "unknown",
-    "unknown",
-    "unknown",
-    "unknown",
-    "unknown",
-    "unknown",
-  ];
-
-  // Khởi tạo menuFood, hàm nạp dữ liệu từ firebase về menuFood
-  List<Food> menuFood = [
-    Food(
-        name: "name",
-        description: "description",
-        imagePath: "imagePath",
-        price: 0.0,
-        category: "category")
-  ];
-
   late TabController _tabController;
-
-  void fetchMenuTabBar() async {
-    // Phương thức để fetch dữ liệu từ Firestore và cập nhật menuTabBar
-    final QuerySnapshot querySnapshotTabBar =
-        await FirebaseFirestore.instance.collection('categories').get();
-    setState(() {
-      menuTabBar =
-          querySnapshotTabBar.docs.map((doc) => doc['name'] as String).toList();
-      _tabController = TabController(length: menuTabBar.length, vsync: this);
-    });
-  }
-
-  void fetchData() async {
-    final QuerySnapshot querySnapshot =
-        await FirebaseFirestore.instance.collection('products').get();
-    setState(() {
-      menuFood = querySnapshot.docs.map((doc) {
-        final data = doc.data() as Map<String, dynamic>;
-        return Food(
-          name: data['name'],
-          description: data['description'],
-          price: data['price'],
-          imagePath: data['imagePath'],
-          category: data['category'],
-        );
-      }).toList();
-    });
-  }
 
   // Stream để lắng nghe sự thay đổi của dữ liệu từ Firestore và cập nhật menuTabBar
   StreamSubscription<QuerySnapshot>? _subscriptionTabBar;
@@ -84,9 +39,6 @@ class _HomePageState extends State<HomePage>
     super.initState();
 
     _tabController = TabController(length: menuTabBar.length, vsync: this);
-
-    fetchMenuTabBar();
-    fetchData();
 
     // Lắng nghe sự thay đổi của dữ liệu từ Firestore và cập nhật menuTabBar
     _subscriptionTabBar = FirebaseFirestore.instance
