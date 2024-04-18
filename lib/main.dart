@@ -5,7 +5,7 @@ import 'package:fooddelivtute/firebase_options.dart';
 import 'package:fooddelivtute/models/restaurant.dart';
 import 'package:fooddelivtute/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:fooddelivtute/controllers/fetchData.dart';
+import 'package:fooddelivtute/services/database/firestore.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fooddelivtute/pages/home_page.dart';
 import 'package:fooddelivtute/services/auth/login_or_register.dart';
-import 'package:fooddelivtute/controllers/fetchData.dart';
+import 'package:fooddelivtute/services/database/firestore.dart';
 
 class AuthGate extends StatelessWidget {
   const AuthGate({super.key});

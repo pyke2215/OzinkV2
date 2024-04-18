@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fooddelivtute/pages/cart_page.dart';
+// import 'package:fooddelivtute/pages/add_product.dart';
 
 class MySliverAppBar extends StatelessWidget {
   final Widget child;
@@ -19,7 +20,22 @@ class MySliverAppBar extends StatelessWidget {
       floating: false,
       pinned: true,
       actions: [
-        // cart button
+        /*
+        // Add Product
+        IconButton(
+          onPressed: () {
+            // go to cart page
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const AddProductData(),
+              ),
+            );
+          },
+          icon: const Icon(Icons.add),
+        ),
+*/
+        // Cart button
         IconButton(
           onPressed: () {
             // go to cart page
@@ -35,7 +51,7 @@ class MySliverAppBar extends StatelessWidget {
       ],
       backgroundColor: Theme.of(context).colorScheme.background,
       foregroundColor: Theme.of(context).colorScheme.inversePrimary,
-      title: const Text("Ô zin store"),
+      title: const Text("Ô Zin Store"),
       flexibleSpace: FlexibleSpaceBar(
         background: Padding(
           padding: const EdgeInsets.only(bottom: 50.0),

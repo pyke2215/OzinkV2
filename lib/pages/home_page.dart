@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:fooddelivtute/components/my_food_tile.dart';
 import 'package:fooddelivtute/components/my_tab_bar.dart';
-import 'package:fooddelivtute/controllers/fetchData.dart';
+import 'package:fooddelivtute/services/database/firestore.dart';
 import 'package:fooddelivtute/models/food.dart';
 import 'package:fooddelivtute/pages/food_page.dart';
 import 'package:provider/provider.dart';
