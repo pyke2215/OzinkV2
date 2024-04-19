@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fooddelivtute/components/my_receipt.dart';
 import 'package:fooddelivtute/models/restaurant.dart';
+import 'package:fooddelivtute/pages/home_page.dart';
 import 'package:fooddelivtute/services/database/firestore.dart';
 import 'package:provider/provider.dart';
 
@@ -12,7 +13,6 @@ class DeliveryProgressPage extends StatefulWidget {
 }
 
 class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
-  // get access to db
   FirestoreService db = FirestoreService();
 
   @override
@@ -30,9 +30,25 @@ class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
         backgroundColor: Colors.transparent,
       ),
       bottomNavigationBar: _buildBottomNavBar(context),
-      body: MyReceipt(),
+      body: const MyReceipt(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => HomePage(
+                menuTabBar: menuTabBar,
+                menuFood: menuFood,
+              ),
+            ),
+          );
+        },
+        child: const Icon(Icons.home),
+      ),
     );
   }
+
+
 
   // custom navbar
   Widget _buildBottomNavBar(BuildContext context) {
