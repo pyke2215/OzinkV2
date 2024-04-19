@@ -44,37 +44,43 @@ class _MyCartTitleState extends State<MyCartTile> {
 
                   const SizedBox(width: 15),
                   // name and price
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // food name
-                      Text(widget.cartItem.food.name),
-                      const SizedBox(height: 1),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // food name
+                        Text(
+                          widget.cartItem.food.name,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
+                        ),
+                        const SizedBox(height: 1),
 
-                      // food price
-                      Text(
-                        '\$${totalPrice.toStringAsFixed(2)}',
-                        style: TextStyle(
-                            color: Theme.of(context).colorScheme.primary),
-                      ),
+                        // food price
+                        Text(
+                          '\$${totalPrice.toStringAsFixed(2)}',
+                          style: TextStyle(
+                              color: Theme.of(context).colorScheme.primary),
+                        ),
 
-                      const SizedBox(height: 5),
-                      // incre or decre quantity
-                      QuantitySelector(
-                        quantity: widget.cartItem.quantity,
-                        food: widget.cartItem.food,
-                        onDecrement: () {
-                          setState(() {
-                            restaurant.removeFromCart(widget.cartItem);
-                          });
-                        },
-                        onIncrement: () {
-                          setState(() {
-                            restaurant.addToCart(widget.cartItem.food);
-                          });
-                        },
-                      ),
-                    ],
+                        const SizedBox(height: 5),
+                        // incre or decre quantity
+                        QuantitySelector(
+                          quantity: widget.cartItem.quantity,
+                          food: widget.cartItem.food,
+                          onDecrement: () {
+                            setState(() {
+                              restaurant.removeFromCart(widget.cartItem);
+                            });
+                          },
+                          onIncrement: () {
+                            setState(() {
+                              restaurant.addToCart(widget.cartItem.food);
+                            });
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                   const SizedBox(width: 10),
                 ],
