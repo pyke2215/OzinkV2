@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 class FoodPage extends StatefulWidget {
   final Food food;
 
-  FoodPage({
+  const FoodPage({
     super.key,
     required this.food,
   });
@@ -35,8 +35,7 @@ class _FoodPageState extends State<FoodPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  height: MediaQuery.of(context).size.height - 120,
+                Expanded(
                   child: ListView(
                     children: [
                       // food image
