@@ -19,7 +19,6 @@ class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
   void initState() {
     super.initState();
 
-    // Nếu chúng ta đến trang này, gửi đơn hàng đến cơ sở dữ liệu Firestore
     String receipt = context.read<Restaurant>().displayCartReceipt();
     db.saveOrderToDatabase(receipt);
   }

@@ -118,14 +118,14 @@ class Restaurant extends ChangeNotifier {
 
     for (final cartItem in _cart) {
       receipt.writeln(
-          "${cartItem.quantity} x ${cartItem.food.name} - ${_formatPrice(cartItem.food.price)}");
+          "${cartItem.quantity} x ${cartItem.food.name} - ${formatPrice(cartItem.food.price)}");
       receipt.writeln();
     }
 
     receipt.writeln("--------------------");
     receipt.writeln();
     receipt.writeln("Tổng món: ${getTotalItemCount()}");
-    receipt.writeln("Tổng giá: ${_formatPrice(getTotalPrice())}");
+    receipt.writeln("Tổng giá: ${formatPrice(getTotalPrice())}");
     receipt.writeln();
     receipt.writeln("Giao hàng tới: $deliveryAddress");
 
@@ -133,7 +133,7 @@ class Restaurant extends ChangeNotifier {
   }
 
   // format double value into money
-  String _formatPrice(double price) {
+  String formatPrice(double price) {
     return '${price.toStringAsFixed(0)} VND';
   }
 }

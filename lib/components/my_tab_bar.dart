@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MyTabBar extends StatelessWidget {
+class MyTabBar extends StatelessWidget implements PreferredSizeWidget {
   final TabController tabController;
   final List<String> menuTabBar;
 
@@ -27,4 +27,8 @@ class MyTabBar extends StatelessWidget {
       ),
     );
   }
+  
+  @override
+  // TODO: implement preferredSize
+  Size get preferredSize => throw UnimplementedError();
 }
