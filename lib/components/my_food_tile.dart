@@ -37,12 +37,15 @@ class FoodTile extends StatelessWidget {
           children: [
             // text food details
             Container(
+              width: MediaQuery.of(context).size.width - 190,
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     food.name,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
                     style: const TextStyle(fontSize: 16),
                   ),
                   Text(
@@ -54,7 +57,6 @@ class FoodTile extends StatelessWidget {
                   ), // Text
                   const SizedBox(height: 5),
                   Container(
-                    width: MediaQuery.of(context).size.width - 200,
                     child: Text(
                       food.description,
                       overflow: TextOverflow.ellipsis,
